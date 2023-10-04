@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CrudApplication1.Models.Employee>
+
+
+@{
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+    //int intSno = 0;
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-8 offset-2">
+
+          <h1 class="text-center text-primary">Employee Record</h1>
+          <br />
+
+            @* partial view  *@
+            <partial name="_pager" model="@pager"/>
+
+          <a class=" btn btn-sm btn-success m-1" asp-controller="Employee" asp-action="Create">Create</a>
+          <p class="text-center text-success">@TempData["error"]</p>
+
+          <table class="table table-bordered">
+
+                <tr class="text-center">
+                    @* <th>Sno</th> *@
+
+                    <th>
+                        Id
+                        <button><a asp-action="Index" asp-route-sortBy="Id" asp-route-sortDirection="asc" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-up"></i></a></button>
+                        <button> <a asp-action="Index" asp-route-sortBy="Id" asp-route-sortDirection="des" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-down"></i></a></button>
+                    </th>
+
+                    <th>
+                        Name
+                        <button><a asp-action="Index" asp-route-sortBy="Name" asp-route-sortDirection="asc" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-up"></i></a></button>
+                        <button> <a asp-action="Index" asp-route-sortBy="Name" asp-route-sortDirection="des" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-down"></i></a></button>
+                    </th>
+
+                    <th>
+                        City
+                        <button><a asp-action="Index" asp-route-sortBy="City" asp-route-sortDirection="asc" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-up"></i></a></button>
+                        <button> <a asp-action="Index" asp-route-sortBy="City" asp-route-sortDirection="des" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-down"></i></a></button>
+                    </th>
+
+                    <th>
+                        State
+                        <button><a asp-action="Index" asp-route-sortBy="State" asp-route-sortDirection="asc" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-up"></i></a></button>
+                        <button> <a asp-action="Index" asp-route-sortBy="State" asp-route-sortDirection="des" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-down"></i></a></button>
+                    </th>
+
+                    <th>
+                        Salary
+                        <button><a asp-action="Index" asp-route-sortBy="Salary" asp-route-sortDirection="asc" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-up"></i></a></button>
+                        <button> <a asp-action="Index" asp-route-sortBy="Salary" asp-route-sortDirection="des" asp-route-pg="@pager.CurrentPage"> <i class="fas fa-sort-down"></i></a></button>
+                    </th>
+
+
+                    <th>Action</th>
+
+                </tr>
+
+
+                @foreach (var d in Model)
+                {
+                    //intSno = intSno + 1;
+                    <tr class="text-center">
+                        @* <td>@intSno</td> *@
+
+                        <td>@d.Id</td>
+
+                        <td>@d.Name</td>
+
+                        <td>@d.City</td>
+
+                        <td>@d.State</td>
+
+                        <td>@d.Salary</td>
+
+                        <td>
+                        
+                            <a class="btn btn-sm btn-warning" asp-controller="Employee" asp-action="Edit" asp-route-id="@d.Id">
+                           
+                                Edit
+
+                           </a>
+
+                            <a class="btn btn-sm btn-danger" asp-controller="Employee" asp-action="Delete" asp-route-id="@d.Id">
+
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    
+                }
+
+          </table>
+
+            <partial name="_pager" model="@pager" />
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model CrudApplication1.Models.Employee
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center text-primary">Add Employee</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Create">
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input type="text"  asp-for="Name" class="form-control"
+                            placeholder="Enter Employee Name"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label asp-for="City"></label>
+                            <input type="text" asp-for="City" class="form-control"
+                                   placeholder="Enter City Name" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label asp-for="State"></label>
+                            <input type="text" asp-for="State" class="form-control"
+                                   placeholder="Enter State Name" />
+                            <span asp-validation-for="State" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label asp-for="Salary"></label>
+                            <input type="text" asp-for="Salary" class="form-control"
+                                   placeholder="Enter Employee Salary" />
+                            <span asp-validation-for="Salary" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-sm btn-outline-success float-right"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

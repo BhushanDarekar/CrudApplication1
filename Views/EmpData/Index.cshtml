@@ -1,0 +1,22 @@
+﻿@model CrudApplication1.Models.EmpData
+
+<form asp-controller="EmpData" asp-action="Detail" class="search-form">
+    <div class="form-group">
+        <label for="searchBy">Search by:</label>
+        <select asp-for="searchBy" class="form-control">
+            <option>Select</option>
+            <option value="id">Id</option>
+            <option value="name">Name</option>
+            <option value="city">City</option>
+            <option value="state">State</option>
+            <option value="salary">Salary Greater than</option>
+        </select>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="searchString">Search String:</label>
+        <input type="text" asp-for="searchString" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
